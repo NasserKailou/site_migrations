@@ -1,0 +1,26 @@
+# Environnement
+.env
+
+# Composer
+/vendor/
+
+# Uploads et storage
+/storage/uploads/*
+/storage/imports/*
+/storage/exports/*
+!/storage/uploads/.gitkeep
+!/storage/imports/.gitkeep
+!/storage/exports/.gitkeep
+
+# Logs
+*.log
+supervisord.log
+supervisord.pid
+supervisor.sock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PHP
+*.cache

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#005B9A"/>
+  <rect x="0" y="0" width="400" height="630" fill="#1DA462" opacity="0.3"/>
+  <rect x="800" y="0" width="400" height="630" fill="#F4A11D" opacity="0.2"/>
+  <text x="600" y="260" font-family="Arial,sans-serif" font-size="56" font-weight="bold" fill="white" text-anchor="middle">PNDM Niger</text>
+  <text x="600" y="330" font-family="Arial,sans-serif" font-size="26" fill="#cce8ff" text-anchor="middle">Plateforme Nationale des Données</text>
+  <text x="600" y="365" font-family="Arial,sans-serif" font-size="26" fill="#cce8ff" text-anchor="middle">sur la Migration</text>
+  <text x="600" y="430" font-family="Arial,sans-serif" font-size="20" fill="#F4A11D" text-anchor="middle">stat-niger.org/migrations</text>
+  <!-- INS badge -->
+  <circle cx="600" cy="510" r="45" fill="white" opacity="0.2"/>
+  <text x="600" y="520" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">INS Niger</text>
+</svg>

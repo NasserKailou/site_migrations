@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
+  <rect width="200" height="80" fill="white"/>
+  <!-- Italian flag mini -->
+  <rect x="5" y="20" width="14" height="40" fill="#009246"/>
+  <rect x="19" y="20" width="14" height="40" fill="white"/>
+  <rect x="33" y="20" width="14" height="40" fill="#CE2B37"/>
+  <text x="58" y="30" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#003580">Repubblica Italiana</text>
+  <text x="58" y="43" font-family="Arial,sans-serif" font-size="8" fill="#003580">Ministero degli Affari Esteri</text>
+  <text x="58" y="55" font-family="Arial,sans-serif" font-size="8" fill="#003580">e della Cooperazione</text>
+  <text x="58" y="67" font-family="Arial,sans-serif" font-size="7" fill="#CE2B37">Internazionale</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
+  <rect width="200" height="80" fill="white"/>
+  <!-- IOM blue bar -->
+  <rect x="5" y="5" width="60" height="70" rx="4" fill="#009FDB"/>
+  <text x="35" y="32" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">IOM</text>
+  <text x="35" y="48" font-family="Arial,sans-serif" font-size="7" fill="white" text-anchor="middle">OIM</text>
+  <text x="35" y="62" font-family="Arial,sans-serif" font-size="6" fill="#cce8f7" text-anchor="middle">OIM</text>
+  <!-- Full name -->
+  <text x="75" y="28" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#009FDB">International Organization</text>
+  <text x="75" y="40" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#009FDB">for Migration</text>
+  <text x="75" y="55" font-family="Arial,sans-serif" font-size="8" fill="#666">Organisation Internationale</text>
+  <text x="75" y="65" font-family="Arial,sans-serif" font-size="8" fill="#666">pour les Migrations</text>
+</svg>

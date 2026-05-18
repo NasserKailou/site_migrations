@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#005B9A"/>
+      <stop offset="100%" stop-color="#1DA462"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="400" fill="url(#sky)"/>
+  <!-- Desert silhouette -->
+  <path d="M0,300 Q100,250 200,280 Q350,200 450,270 Q600,220 700,260 Q850,200 950,240 Q1050,200 1100,230 L1200,220 L1200,400 L0,400 Z" fill="#c4874a" opacity="0.6"/>
+  <path d="M0,350 Q200,300 400,340 Q600,280 800,320 Q1000,280 1200,310 L1200,400 L0,400 Z" fill="#8B5E3C" opacity="0.8"/>
+  <!-- Sun -->
+  <circle cx="600" cy="120" r="60" fill="#F4A11D" opacity="0.9"/>
+  <!-- Text -->
+  <text x="600" y="370" font-family="Arial,sans-serif" font-size="20" fill="white" text-anchor="middle" opacity="0.7">Corridor d'Agadez — Niger</text>
+</svg>
