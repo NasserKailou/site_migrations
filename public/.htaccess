@@ -1,14 +1,18 @@
 RewriteEngine On
 
-# ── Détection automatique du sous-dossier XAMPP ───────────────
-# Fonctionne que l'app soit dans /site_migrations/public OU à la racine
-RewriteBase /
+# ── Base XAMPP sous-dossier ────────────────────────────────────
+# Adapter ce RewriteBase selon votre installation :
+#   - Installation XAMPP sous-dossier : /site_migrations/public
+#   - Installation à la racine        : /
+# Ce RewriteBase sert uniquement à Apache pour résoudre les chemins
+# Le strip du base path dans le routeur PHP est géré par Request::uri()
+RewriteBase /site_migrations/public
 
-# ── Sécurité ──────────────────────────────────────────────────
+# ── Sécurité : bloquer accès aux dossiers sensibles ────────────
 RewriteRule ^(app|database|config|docs|vendor)/.*$ - [F,L]
 RewriteCond %{SCRIPT_FILENAME} -d [OR]
 RewriteCond %{SCRIPT_FILENAME} -f
-RewriteRule "(^|/)\." - [F]
+RewriteRule "(^|/)\.+" - [F]
 
 # ── En-têtes de sécurité ───────────────────────────────────────
 <IfModule mod_headers.c>
@@ -40,7 +44,7 @@ RewriteRule "(^|/)\." - [F]
     ExpiresByType text/html                 "access plus 0 seconds"
 </IfModule>
 
-# ── Routing PHP ────────────────────────────────────────────────
+# ── Routing PHP — toutes les requêtes → index.php ──────────────
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]

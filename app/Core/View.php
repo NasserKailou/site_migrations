@@ -121,12 +121,31 @@ class View
         $host = preg_replace('/:(80|443)$/', '', $host);
 
         // ── Détection du sous-dossier XAMPP ──────────────────────────
-        // Si APP_URL est défini et contient un path (ex: http://localhost:8085/site_migrations/public)
-        // on l'utilise directement — il a priorité sur la détection automatique
+        // Priorité 1 : APP_URL dans .env contenant un sous-dossier
+        //   ex: APP_URL=http://localhost:8085/site_migrations/public
         $configUrl = Config::get('app.url', '');
-        if ($configUrl && rtrim($configUrl, '/') !== $scheme . '://' . $host) {
-            // APP_URL contient un sous-dossier → utiliser tel quel
-            $base = rtrim($configUrl, '/');
+        if ($configUrl) {
+            $urlParsed  = parse_url($configUrl);
+            $urlHost    = ($urlParsed['host'] ?? '') . (isset($urlParsed['port']) ? ':' . $urlParsed['port'] : '');
+            $urlPath    = rtrim($urlParsed['path'] ?? '', '/');
+            // APP_URL valide avec host → utiliser directement
+            if ($urlHost) {
+                // Si APP_URL a un path non-vide → sous-dossier configuré
+                if ($urlPath !== '') {
+                    $base = $scheme . '://' . $host . $urlPath;
+                } else {
+                    $base = $scheme . '://' . $host;
+                }
+                return $base;
+            }
+        }
+
+        // Priorité 2 : Auto-détection via SCRIPT_NAME (fonctionne sans APP_URL)
+        // SCRIPT_NAME = /site_migrations/public/index.php → basePath = /site_migrations/public
+        $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+        $scriptBase = rtrim(dirname($scriptName), '/');
+        if ($scriptBase !== '' && $scriptBase !== '/') {
+            $base = $scheme . '://' . $host . $scriptBase;
             return $base;
         }
 

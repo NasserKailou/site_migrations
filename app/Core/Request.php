@@ -5,9 +5,59 @@ namespace App\Core;
 /** Objet requête HTTP */
 class Request
 {
+    /**
+     * Retourne l'URI de la requête, en strippant le base path
+     * si l'application est installée dans un sous-dossier XAMPP.
+     *
+     * Détecte le base path via 2 méthodes (ordre de priorité) :
+     *  1. APP_URL dans .env : parse le path (ex: /site_migrations/public)
+     *  2. Auto-détection via SCRIPT_NAME (fonctionne sans config .env)
+     *     SCRIPT_NAME = /site_migrations/public/index.php
+     *     → base      = /site_migrations/public
+     *
+     * Exemples :
+     *   XAMPP : REQUEST_URI = /site_migrations/public/admin
+     *           SCRIPT_NAME = /site_migrations/public/index.php
+     *           → uri retournée = /admin
+     *
+     *   Root  : REQUEST_URI = /admin
+     *           SCRIPT_NAME = /index.php
+     *           → uri retournée = /admin
+     */
     public static function uri(): string
     {
-        return $_SERVER['REQUEST_URI'] ?? '/';
+        $raw = $_SERVER['REQUEST_URI'] ?? '/';
+
+        // Supprimer la query string pour le routing
+        $path = parse_url($raw, PHP_URL_PATH) ?? '/';
+
+        // ── Méthode 1 : base path depuis APP_URL dans .env ───────────
+        $appUrl = \App\Core\Config::get('app.url', '');
+        if ($appUrl) {
+            $urlPath = rtrim(parse_url($appUrl, PHP_URL_PATH) ?? '', '/');
+            if ($urlPath !== '' && str_starts_with($path, $urlPath)) {
+                return self::normPath(substr($path, strlen($urlPath)));
+            }
+        }
+
+        // ── Méthode 2 : auto-détection via SCRIPT_NAME ───────────────
+        // SCRIPT_NAME = /site_migrations/public/index.php
+        // On retire /index.php pour obtenir le base path
+        $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+        $basePath   = rtrim(dirname($scriptName), '/');
+        // dirname('/index.php') = '/' → on ignore
+        if ($basePath !== '' && $basePath !== '/' && str_starts_with($path, $basePath)) {
+            return self::normPath(substr($path, strlen($basePath)));
+        }
+
+        return self::normPath($path);
+    }
+
+    /** Normalise un chemin : commence par /, pas de trailing slash */
+    private static function normPath(string $path): string
+    {
+        $path = '/' . ltrim($path, '/');
+        return ($path !== '/') ? rtrim($path, '/') : '/';
     }
 
     public static function method(): string

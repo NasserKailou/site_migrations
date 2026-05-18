@@ -1,4 +1,15 @@
-# Redirection racine vers public/
+# ============================================================
+# PNDM — .htaccess RACINE du projet (dossier site_migrations/)
+# Redirige toutes les requêtes vers public/index.php
+#
+# URL d'accès XAMPP : http://localhost:8085/site_migrations/
+# ============================================================
 RewriteEngine On
+
+# Si on accède directement à la racine → rediriger vers public/
 RewriteRule ^$ public/ [L]
-RewriteRule ^((?!public/).*)$ public/$1 [L,QSA]
+
+# Pour tout autre chemin, rediriger vers public/$1
+# (sauf si le fichier/dossier existe déjà dans public/)
+RewriteCond %{REQUEST_URI} !^/site_migrations/public/
+RewriteRule ^((?!public/).*)?$ public/$1 [L,QSA]
