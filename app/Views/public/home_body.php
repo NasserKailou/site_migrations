@@ -1,37 +1,136 @@
 <!-- ═══════════════════════════════════════════════════════════════
-     PNDM — Contenu page d'accueil
+     PNDM — Page d'accueil
 ════════════════════════════════════════════════════════════════ -->
 
-<!-- ── HERO ─────────────────────────────────────────────────── -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-pattern" aria-hidden="true"></div>
-  <div class="container">
-    <div class="hero-content animate-fade">
-      <span class="hero-badge">
-        <i class="fa-solid fa-globe-africa" aria-hidden="true"></i>
-        République du Niger — INS
-      </span>
-      <h1 id="hero-title">
-        Les données sur<br><span>la migration</span><br>au Niger
-      </h1>
-      <p>
-        Plateforme officielle de l'Institut National de la Statistique pour la
-        consultation, la visualisation et le téléchargement des données sur
-        les migrations internationales et internes au Niger.
-      </p>
-      <div class="hero-actions">
-        <a href="<?= url('indicateurs') ?>" class="btn btn-accent btn-lg">
-          <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
-          Explorer les données
-        </a>
-        <a href="<?= url('dossiers/agadez') ?>" class="btn btn-white btn-lg">
-          <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
-          Dossier Agadez
-        </a>
+<!-- ── CAROUSEL HERO ─────────────────────────────────────────── -->
+<section class="home-carousel" aria-label="Diaporama PNDM" style="position:relative;overflow:hidden">
+  <div class="carousel-track" id="mainCarousel">
+
+    <!-- Slide 1 -->
+    <div class="carousel-slide active" aria-roledescription="slide" aria-label="Slide 1 sur 4">
+      <div class="carousel-bg" style="background-image:url('<?= url('assets/images/carousel/mig1.PNG') ?>')"></div>
+      <div class="carousel-overlay"></div>
+      <div class="container carousel-content animate-fade">
+        <span class="hero-badge">
+          <i class="fa-solid fa-globe-africa" aria-hidden="true"></i>
+          République du Niger — INS
+        </span>
+        <h1>Les données sur<br><span>la migration</span><br>au Niger</h1>
+        <p>
+          Plateforme officielle de l'Institut National de la Statistique pour la
+          consultation, la visualisation et le téléchargement des données sur
+          les migrations internationales et internes au Niger.
+        </p>
+        <div class="hero-actions">
+          <a href="<?= url('indicateurs') ?>" class="btn btn-accent btn-lg">
+            <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+            Explorer les données
+          </a>
+          <a href="<?= url('dossiers/agadez') ?>" class="btn btn-white btn-lg">
+            <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+            Dossier Agadez
+          </a>
+        </div>
       </div>
     </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 2 sur 4">
+      <div class="carousel-bg" style="background-image:url('<?= url('assets/images/carousel/mig2.PNG') ?>')"></div>
+      <div class="carousel-overlay"></div>
+      <div class="container carousel-content">
+        <span class="hero-badge">
+          <i class="fa-solid fa-users" aria-hidden="true"></i>
+          Migrations internes
+        </span>
+        <h1>Flux migratoires<br><span>interrégionaux</span></h1>
+        <p>
+          Analyse des déplacements de population entre les régions du Niger —
+          tendances, causes et impact socio-économique.
+        </p>
+        <div class="hero-actions">
+          <a href="<?= url('indicateurs?them=flux') ?>" class="btn btn-accent btn-lg">
+            <i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i>
+            Flux migratoires
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 3 sur 4">
+      <div class="carousel-bg" style="background-image:url('<?= url('assets/images/carousel/mig3.PNG') ?>')"></div>
+      <div class="carousel-overlay"></div>
+      <div class="container carousel-content">
+        <span class="hero-badge">
+          <i class="fa-solid fa-map-pin" aria-hidden="true"></i>
+          Dossier spécial
+        </span>
+        <h1>Agadez,<br><span>carrefour migratoire</span></h1>
+        <p>
+          Données et analyses complètes sur les flux migratoires de la région d'Agadez
+          et du corridor Tamanrasset–Assamaka–Agadez.
+        </p>
+        <div class="hero-actions">
+          <a href="<?= url('dossiers/agadez') ?>" class="btn btn-accent btn-lg">
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            Accéder au dossier
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 4 sur 4">
+      <div class="carousel-bg" style="background-image:url('<?= url('assets/images/carousel/Migration.jpeg') ?>')"></div>
+      <div class="carousel-overlay"></div>
+      <div class="container carousel-content">
+        <span class="hero-badge">
+          <i class="fa-solid fa-file-chart-column" aria-hidden="true"></i>
+          Données officielles
+        </span>
+        <h1>Statistiques<br><span>nationales</span><br>de migration</h1>
+        <p>
+          Accédez aux séries historiques, métadonnées et outils de téléchargement
+          pour toutes les données migratoires officielles du Niger.
+        </p>
+        <div class="hero-actions">
+          <a href="<?= url('indicateurs') ?>#metadonnees" class="btn btn-accent btn-lg">
+            <i class="fa-solid fa-database" aria-hidden="true"></i>
+            Métadonnées
+          </a>
+          <a href="<?= url('indicateurs') ?>#extraction" class="btn btn-white btn-lg">
+            <i class="fa-solid fa-download" aria-hidden="true"></i>
+            Télécharger
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.carousel-track -->
+
+  <!-- Contrôles navigation -->
+  <button class="carousel-btn carousel-prev" onclick="carouselMove(-1)" aria-label="Slide précédent">
+    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <button class="carousel-btn carousel-next" onclick="carouselMove(1)" aria-label="Slide suivant">
+    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+  </button>
+
+  <!-- Points indicateurs -->
+  <div class="carousel-dots" role="tablist" aria-label="Indicateurs de slide">
+    <button class="carousel-dot active" onclick="carouselGoto(0)" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
+    <button class="carousel-dot"        onclick="carouselGoto(1)" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+    <button class="carousel-dot"        onclick="carouselGoto(2)" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+    <button class="carousel-dot"        onclick="carouselGoto(3)" role="tab" aria-selected="false" aria-label="Slide 4"></button>
   </div>
+</section>
+
+<!-- ── BANNIÈRE PRINCIPALE ────────────────────────────────────── -->
+<section class="home-banner" aria-label="Bannière Institut National de la Statistique">
+  <img src="<?= url('assets/images/entete/bannier.jpg') ?>"
+       alt="Bannière PNDM — Institut National de la Statistique du Niger"
+       class="home-banner-img">
 </section>
 
 <!-- ── COMPTEURS ─────────────────────────────────────────────── -->
@@ -83,7 +182,6 @@
       <?php foreach ($indicateurs_phares as $ind): ?>
       <?php
         $hexColor = $ind['thematique_couleur'] ?? '#f7a13e';
-        // Convert hex to light bg
         $r = hexdec(substr($hexColor,1,2));
         $g = hexdec(substr($hexColor,3,2));
         $b = hexdec(substr($hexColor,5,2));
@@ -109,7 +207,6 @@
           <span><?= esc($ind['unite_symbole'] ?? '') ?> <?= $ind['derniere_annee'] ? '('.$ind['derniere_annee'].')' : '' ?></span>
         </div>
         <?php endif; ?>
-        <!-- Mini sparkline canvas -->
         <div class="sparkline-container" aria-hidden="true">
           <canvas id="spark-<?= (int)$ind['id'] ?>" height="50" role="img"
                   aria-label="Évolution <?= esc($ind['libelle_fr']) ?>"></canvas>
@@ -181,9 +278,9 @@
       </a>
     </div>
     <div aria-hidden="true">
-      <img src="<?= url('assets/images/agadez-hero.png') ?>"
-           alt="Carte du Niger — Région d'Agadez"
-           style="border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.3);width:100%;opacity:.9">
+      <img src="<?= url('assets/images/carousel/agadez/carte_agadez.jpg') ?>"
+           alt="Carte de la région d'Agadez"
+           style="border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.3);width:100%;max-height:380px;object-fit:cover">
     </div>
   </div>
 </section>
@@ -264,4 +361,42 @@
 <!-- ── SPARKLINES DATA (JSON in-page) ─────────────────────────── -->
 <script id="sparklines-data" type="application/json">
 <?= json_safe($sparklines_data ?? []) ?>
+</script>
+
+<!-- ── CAROUSEL SCRIPT ───────────────────────────────────────── -->
+<script>
+(function() {
+  let current = 0;
+  const slides = document.querySelectorAll('#mainCarousel .carousel-slide');
+  const dots   = document.querySelectorAll('.carousel-dot');
+  let timer    = setInterval(() => carouselMove(1), 5500);
+
+  function show(idx) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    dots[current].setAttribute('aria-selected','false');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    dots[current].setAttribute('aria-selected','true');
+  }
+
+  window.carouselMove = function(dir) { clearInterval(timer); show(current + dir); timer = setInterval(() => carouselMove(1), 5500); };
+  window.carouselGoto = function(idx) { clearInterval(timer); show(idx); timer = setInterval(() => carouselMove(1), 5500); };
+
+  // Pause on hover
+  const track = document.getElementById('mainCarousel');
+  if (track) {
+    track.addEventListener('mouseenter', () => clearInterval(timer));
+    track.addEventListener('mouseleave', () => { timer = setInterval(() => carouselMove(1), 5500); });
+  }
+
+  // Touch swipe support
+  let touchStartX = 0;
+  document.querySelector('.home-carousel')?.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+  document.querySelector('.home-carousel')?.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) carouselMove(dx < 0 ? 1 : -1);
+  }, {passive:true});
+})();
 </script>

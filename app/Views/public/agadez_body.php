@@ -2,35 +2,111 @@
      PNDM — Dossier Agadez
 ════════════════════════════════════════════════════════════════ -->
 
-<!-- ── HERO ─────────────────────────────────────────────────── -->
-<section style="position:relative;min-height:500px;display:flex;align-items:center;background:linear-gradient(135deg,#1a3a2a 0%,#2a5a3e 50%,#e08820 100%);color:#fff;overflow:hidden"
+<!-- ── BANNIÈRE AGADEZ ────────────────────────────────────────── -->
+<?php
+// Helper inline pour encoder les espaces dans les URLs d'images
+function urlencode_path(string $url): string {
+  $parts = parse_url($url);
+  $path  = $parts['path'] ?? '';
+  $encoded = implode('/', array_map('rawurlencode', explode('/', $path)));
+  $base = ($parts['scheme'] ?? 'http') . '://' . ($parts['host'] ?? '');
+  if (!empty($parts['port'])) $base .= ':' . $parts['port'];
+  return $base . $encoded . (isset($parts['query']) ? '?' . $parts['query'] : '');
+}
+?>
+<section class="home-banner" aria-label="Bannière Agadez">
+  <img src="<?= url('assets/images/entete/bannierAz.jpg') ?>"
+       alt="Bannière Dossier Agadez — Carrefour migratoire"
+       class="home-banner-img" style="max-height:260px">
+</section>
+
+<!-- ── HERO AGADEZ (breadcrumb + titre) ─────────────────────── -->
+<section style="background:linear-gradient(135deg,#1a3a2a 0%,#2a5a3e 100%);color:#fff;padding:3rem 0"
          aria-labelledby="agadez-hero-title">
-  <div style="position:absolute;inset:0;background-image:url('<?= url('assets/images/agadez-hero.png') ?>');background-size:cover;background-position:center;opacity:.25"></div>
-  <div class="container" style="position:relative;z-index:1;padding:5rem 0">
+  <div class="container">
     <nav aria-label="Fil d'Ariane" style="font-size:.8rem;opacity:.7;margin-bottom:1.5rem">
       <a href="<?= url() ?>" style="color:inherit">Accueil</a> › Dossiers › Agadez
     </nav>
-    <span class="hero-badge" style="background:rgba(244,161,29,.2);border-color:var(--pndm-orange);color:var(--pndm-orange);margin-bottom:1.5rem">
-      <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
-      Dossier spécial — Région d'Agadez
-    </span>
-    <h1 id="agadez-hero-title" style="font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin-bottom:1rem">
-      Agadez,<br>carrefour migratoire
-    </h1>
-    <p style="max-width:600px;opacity:.85;font-size:1.1rem;line-height:1.7;margin-bottom:2rem">
-      Données, analyses et visualisations sur les flux migratoires de la région d'Agadez
-      et du corridor Tamanrasset–Assamaka–Agadez.
-    </p>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap">
-      <a href="#tableau-bord" class="btn btn-accent btn-lg">
-        <i class="fa-solid fa-chart-line" aria-hidden="true"></i> Tableau de bord
-      </a>
-      <a href="#donnees" class="btn btn-white btn-lg">
-        <i class="fa-solid fa-database" aria-hidden="true"></i> Données
-      </a>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;flex-wrap:wrap">
+      <div>
+        <span class="hero-badge" style="background:rgba(244,161,29,.2);border-color:var(--pndm-orange);color:var(--pndm-orange);margin-bottom:1.25rem">
+          <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+          Dossier spécial — Région d'Agadez
+        </span>
+        <h1 id="agadez-hero-title" style="font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:1rem">
+          Agadez,<br>carrefour migratoire
+        </h1>
+        <p style="max-width:600px;opacity:.85;font-size:1.05rem;line-height:1.7;margin-bottom:2rem">
+          Données, analyses et visualisations sur les flux migratoires de la région d'Agadez
+          et du corridor Tamanrasset–Assamaka–Agadez.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="#tableau-bord" class="btn btn-accent btn-lg">
+            <i class="fa-solid fa-chart-line" aria-hidden="true"></i> Tableau de bord
+          </a>
+          <a href="#indicateurs" class="btn btn-white btn-lg">
+            <i class="fa-solid fa-database" aria-hidden="true"></i> Données
+          </a>
+        </div>
+      </div>
+      <!-- Carousel Agadez (dans le hero) -->
+      <div class="agadez-carousel" style="width:340px;flex-shrink:0" aria-label="Images d'Agadez">
+        <div class="agadez-carousel-track" id="agadezCarousel">
+          <div class="carousel-slide active">
+            <div class="carousel-bg" style="background-image:url('<?= url('assets/images/carousel/agadez/carte_agadez.jpg') ?>')"></div>
+            <div class="carousel-overlay"></div>
+            <div class="agadez-carousel-caption">Carte de la région d'Agadez</div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-bg" style="background-image:url('<?= urlencode_path(url('assets/images/carousel/agadez/carte demographique 2023.jpg')) ?>')"></div>
+            <div class="carousel-overlay"></div>
+            <div class="agadez-carousel-caption">Carte démographique 2023</div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-bg" style="background-image:url('<?= url('assets/images/carousel/agadez/migran8.jpg') ?>')"></div>
+            <div class="carousel-overlay"></div>
+            <div class="agadez-carousel-caption">Migrants — corridor Agadez</div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-bg" style="background-image:url('<?= url('assets/images/carousel/agadez/migran9.jpg') ?>')"></div>
+            <div class="carousel-overlay"></div>
+            <div class="agadez-carousel-caption">Flux migratoires — Agadez</div>
+          </div>
+        </div>
+        <button class="carousel-btn carousel-prev" onclick="agadezMove(-1)" aria-label="Précédent">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button class="carousel-btn carousel-next" onclick="agadezMove(1)" aria-label="Suivant">
+          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </button>
+        <div class="carousel-dots" style="bottom:.75rem">
+          <button class="carousel-dot active" onclick="agadezGoto(0)" aria-label="Image 1"></button>
+          <button class="carousel-dot" onclick="agadezGoto(1)" aria-label="Image 2"></button>
+          <button class="carousel-dot" onclick="agadezGoto(2)" aria-label="Image 3"></button>
+          <button class="carousel-dot" onclick="agadezGoto(3)" aria-label="Image 4"></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+<script>
+(function() {
+  let cur = 0;
+  const slides = document.querySelectorAll('#agadezCarousel .carousel-slide');
+  const dots   = document.querySelectorAll('.agadez-carousel .carousel-dot');
+  let timer    = setInterval(() => agadezMove(1), 4500);
+
+  function show(idx) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (idx + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+  window.agadezMove = function(d) { clearInterval(timer); show(cur + d); timer = setInterval(() => agadezMove(1), 4500); };
+  window.agadezGoto = function(i) { clearInterval(timer); show(i); timer = setInterval(() => agadezMove(1), 4500); };
+})();
+</script>
 
 <!-- ── LAYOUT AVEC SOMMAIRE ──────────────────────────────────── -->
 <div class="container" style="display:grid;grid-template-columns:240px 1fr;gap:3rem;padding-top:3rem;padding-bottom:5rem;align-items:start">
@@ -94,11 +170,11 @@
           </p>
         </div>
         <div>
-          <img src="<?= url('assets/images/agadez-hero.png') ?>"
+          <img src="<?= url('assets/images/carousel/agadez/carte_agadez.jpg') ?>"
                alt="Carte du corridor migratoire Tamanrasset-Assamaka-Agadez"
-               style="border-radius:12px;box-shadow:var(--shadow-md);width:100%">
+               style="border-radius:12px;box-shadow:var(--shadow-md);width:100%;max-height:260px;object-fit:cover">
           <p style="font-size:.7rem;color:var(--gray-400);text-align:center;margin-top:.5rem">
-            Source : IOM / OIM
+            Source : IOM / OIM — PNDM
           </p>
         </div>
       </div>

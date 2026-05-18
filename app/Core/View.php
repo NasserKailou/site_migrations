@@ -103,8 +103,7 @@ class View
             $scheme = 'https';
         } else {
             // Heuristique sandbox / reverse proxy transparent :
-            // Si le HTTP_HOST ne contient pas de port explicite (donc port 80/443 implicite)
-            // ET que ce n'est pas localhost/127.x → on est derrière un proxy HTTPS
+            // Si le HTTP_HOST ne contient pas de port explicite ET ce n'est pas localhost → HTTPS proxy
             $host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'];
             $hasExplicitPort = str_contains($host, ':');
             $isLocalhost = (
@@ -118,14 +117,23 @@ class View
         }
 
         $host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'];
-        // Prendre uniquement le premier host si liste (X-Forwarded-Host: h1, h2)
         $host = trim(explode(',', $host)[0]);
-        // Supprimer ports standards
         $host = preg_replace('/:(80|443)$/', '', $host);
+
+        // ── Détection du sous-dossier XAMPP ──────────────────────────
+        // Si APP_URL est défini et contient un path (ex: http://localhost:8085/site_migrations/public)
+        // on l'utilise directement — il a priorité sur la détection automatique
+        $configUrl = Config::get('app.url', '');
+        if ($configUrl && rtrim($configUrl, '/') !== $scheme . '://' . $host) {
+            // APP_URL contient un sous-dossier → utiliser tel quel
+            $base = rtrim($configUrl, '/');
+            return $base;
+        }
 
         $base = $scheme . '://' . $host;
         return $base;
     }
+
 
     /** Helper : URL asset avec cache-busting */
     public static function asset(string $path): string

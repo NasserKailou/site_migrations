@@ -75,7 +75,7 @@ $metaImg   = $metaImg   ?? url('assets/images/og-default.png');
 <header class="site-header" role="banner">
   <div class="container">
     <a href="<?= url() ?>" class="site-logo" aria-label="PNDM — Accueil">
-      <img src="<?= url('assets/images/ins-logo.png') ?>" alt="Logo INS Niger" width="44" height="44">
+      <img src="<?= url('assets/images/img/ins.png') ?>" alt="Logo INS Niger" width="44" height="44" style="object-fit:contain">
       <span class="site-logo-text">
         <span>PNDM</span>
         <span>Institut National de la Statistique</span>
@@ -124,17 +124,18 @@ $metaImg   = $metaImg   ?? url('assets/images/og-default.png');
     <div class="footer-grid">
       <!-- Col 1 : À propos -->
       <div class="footer-col">
-        <div class="footer-logo">
-          <img src="<?= url('assets/images/ins-logo.png') ?>" alt="INS Niger" height="50">
+        <div class="footer-logo" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+          <img src="<?= url('assets/images/img/ins.png') ?>"     alt="INS Niger"       style="height:52px;object-fit:contain;filter:brightness(0) invert(1)">
+          <img src="<?= url('assets/images/img/logo.png') ?>"    alt="Logo PNDM"       style="height:42px;object-fit:contain;filter:brightness(0) invert(1)">
         </div>
         <p class="footer-desc">
           La PNDM est la plateforme officielle de l'Institut National de la Statistique du Niger
           pour la diffusion des données sur la migration, développée avec l'appui de l'OIM.
         </p>
-        <div class="footer-partners" aria-label="Partenaires">
-          <img src="<?= url('assets/images/iom-logo.png') ?>"  alt="OIM / IOM" height="32">
-          <img src="<?= url('assets/images/maeci-logo.png') ?>" alt="Ministère Affaires Étrangères Italie" height="28">
-          <img src="<?= url('assets/images/maeci-logo.png') ?>" alt="UNHCR" height="28">
+        <div class="footer-partners" aria-label="Partenaires" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1rem">
+          <img src="<?= url('assets/images/img/danida.png') ?>"       alt="DANIDA"     style="height:30px;object-fit:contain;filter:brightness(0) invert(1);opacity:.85">
+          <img src="<?= url('assets/images/img/logoAvenir3.png') ?>"  alt="Avenir"     style="height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:.85">
+          <img src="<?= url('assets/images/iom-logo.png') ?>"         alt="OIM / IOM"  style="height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:.85">
         </div>
       </div>
       <!-- Col 2 : Navigation -->

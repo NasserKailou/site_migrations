@@ -15,7 +15,7 @@
 <!-- Autosave indicator -->
 <div id="autosave-indicator" style="font-size:.75rem;color:var(--gray-400);margin-bottom:1rem;opacity:.5"></div>
 
-<form id="saisie-form" method="POST" action="<?= url('admin/donnees/saisie') ?>" enctype="multipart/form-data" novalidate>
+<form id="saisie-form" method="POST" action="<?= url('admin/donnees') ?>" enctype="multipart/form-data" novalidate>
   <?= csrf_field() ?>
 
   <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;align-items:start">
