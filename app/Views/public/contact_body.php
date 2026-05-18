@@ -116,7 +116,7 @@
 
                 <div class="contact-info-list">
                     <div class="contact-info-item">
-                        <div class="contact-info-icon contact-info-icon--blue">
+                        <div class="contact-info-icon contact-info-icon--orange">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div>
@@ -131,7 +131,7 @@
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         </div>
                         <div>
-                            <strong>Email</strong>
+                            <strong>Email général</strong>
                             <p><a href="mailto:pndm@ins.niger.ne">pndm@ins.niger.ne</a></p>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                     </div>
 
                     <div class="contact-info-item">
-                        <div class="contact-info-icon contact-info-icon--blue">
+                        <div class="contact-info-icon contact-info-icon--green">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
                         <div>
@@ -157,15 +157,57 @@
                     </div>
                 </div>
 
+                <!-- Équipe PNDM — contacts directs -->
+                <div class="mt-4 p-3 bg-white rounded" style="box-shadow:0 2px 12px rgba(0,0,0,.07);border-radius:12px;">
+                    <h3 style="font-size:.95rem;font-weight:700;color:var(--pndm-orange-dark);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;">
+                        <i class="fa-solid fa-users fa-sm" aria-hidden="true"></i>
+                        Équipe technique PNDM
+                    </h3>
+                    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+                        <thead>
+                            <tr style="background:var(--pndm-orange-light);">
+                                <th style="padding:.5rem .75rem;text-align:left;font-weight:700;color:var(--pndm-orange-dark);border-radius:4px 0 0 0;">Nom & Prénom</th>
+                                <th style="padding:.5rem .75rem;text-align:left;font-weight:700;color:var(--pndm-orange-dark);border-radius:0 4px 0 0;">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $equipe = [
+                                ['Mr Lamou Ousseini Youssoufa',        'youssoufa@ins.ne'],
+                                ['Mr Abdoulaye IDRISSA BOUKARY',       'ibabdoulaye@ins.ne'],
+                                ['Mr Souleymane HARO',                 'sharo@ins.ne'],
+                                ['Mr Abdoul-Nasser Kailou Assoumane',  'akailou@ins.ne'],
+                                ['Mr Abdoul Karim Bachirou Seydou',    'abachirou@ins.ne'],
+                            ];
+                            foreach ($equipe as $i => [$nom, $email]):
+                            ?>
+                            <tr style="background:<?= $i % 2 === 0 ? '#fff' : '#fafafa' ?>;border-bottom:1px solid var(--gray-200);">
+                                <td style="padding:.5rem .75rem;color:var(--gray-800);font-weight:500;"><?= esc($nom) ?></td>
+                                <td style="padding:.5rem .75rem;">
+                                    <a href="mailto:<?= esc($email) ?>"
+                                       style="color:var(--pndm-orange-dark);text-decoration:none;font-weight:500;"
+                                       aria-label="Envoyer un email à <?= esc($nom) ?>">
+                                        <i class="fa-regular fa-envelope fa-xs" aria-hidden="true"></i>
+                                        <?= esc($email) ?>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+
                 <!-- Partenaires logos -->
-                <div class="mt-4 p-3 bg-white rounded shadow-sm">
-                    <p class="small text-muted mb-2">Plateforme développée avec le soutien de :</p>
-                    <div class="d-flex gap-3 align-items-center flex-wrap">
-                        <img src="<?= View::asset('assets/images/logo-iom.png') ?>"
-                             alt="OIM" height="36" style="object-fit:contain;"
+                <div class="mt-3 p-3 bg-white rounded" style="box-shadow:0 1px 8px rgba(0,0,0,.06);border-radius:10px;">
+                    <p style="font-size:.75rem;color:var(--gray-500);margin-bottom:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">
+                        Plateforme développée avec le soutien de :
+                    </p>
+                    <div style="display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;">
+                        <img src="<?= View::asset('assets/images/iom-logo.png') ?>"
+                             alt="OIM / IOM" height="38" style="object-fit:contain;"
                              onerror="this.style.display='none'">
-                        <img src="<?= View::asset('assets/images/logo-maeci.png') ?>"
-                             alt="MAECI Italie" height="36" style="object-fit:contain;"
+                        <img src="<?= View::asset('assets/images/maeci-logo.png') ?>"
+                             alt="MAECI Italie" height="32" style="object-fit:contain;"
                              onerror="this.style.display='none'">
                     </div>
                 </div>
@@ -181,7 +223,7 @@
 }
 .contact-form-title {
     font-size:1.3rem; font-weight:700; margin-bottom:1.5rem;
-    color:var(--primary);
+    color:var(--pndm-orange-dark);
 }
 .contact-info-list { display:flex; flex-direction:column; gap:1.25rem; }
 .contact-info-item {
@@ -198,7 +240,7 @@
 .contact-info-icon--green  { background:rgba(29,164,98,.1);  color:#1DA462; }
 .contact-info-item strong { display:block; font-size:.9rem; margin-bottom:.2rem; }
 .contact-info-item p { margin:0; font-size:.9rem; color:#4b5563; line-height:1.5; }
-.contact-info-item a { color:var(--primary); text-decoration:none; }
+.contact-info-item a { color:var(--pndm-orange-dark); text-decoration:none; }
 .contact-info-item a:hover { text-decoration:underline; }
 </style>
 

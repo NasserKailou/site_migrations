@@ -140,29 +140,29 @@
         <h2 class="section-title text-center mb-5">Nos partenaires</h2>
         <div class="partners-grid">
             <div class="partner-card">
-                <img src="<?= View::asset('assets/images/logo-ins.png') ?>"
+                <img src="<?= View::asset('assets/images/ins-logo.png') ?>"
                      alt="INS Niger — Institut National de la Statistique"
                      loading="lazy"
                      onerror="this.parentElement.querySelector('.partner-fallback').style.display='flex'; this.style.display='none'">
-                <div class="partner-fallback" style="display:none; width:120px; height:60px; background:#f3f4f6; border-radius:8px; align-items:center; justify-content:center; font-weight:700; color:#005B9A; font-size:.9rem; text-align:center; padding:.5rem;">INS Niger</div>
+                <div class="partner-fallback" style="display:none; width:120px; height:60px; background:#f3f4f6; border-radius:8px; align-items:center; justify-content:center; font-weight:700; color:#f7a13e; font-size:.9rem; text-align:center; padding:.5rem;">INS Niger</div>
                 <div class="partner-info">
                     <strong>Institut National de la Statistique</strong>
                     <span>Niger — Entité productrice principale</span>
                 </div>
             </div>
             <div class="partner-card">
-                <img src="<?= View::asset('assets/images/logo-iom.png') ?>"
+                <img src="<?= View::asset('assets/images/iom-logo.png') ?>"
                      alt="OIM — Organisation Internationale pour les Migrations"
                      loading="lazy"
                      onerror="this.parentElement.querySelector('.partner-fallback').style.display='flex'; this.style.display='none'">
-                <div class="partner-fallback" style="display:none; width:120px; height:60px; background:#f3f4f6; border-radius:8px; align-items:center; justify-content:center; font-weight:700; color:#005B9A; font-size:.9rem; text-align:center; padding:.5rem;">OIM/IOM</div>
+                <div class="partner-fallback" style="display:none; width:120px; height:60px; background:#f3f4f6; border-radius:8px; align-items:center; justify-content:center; font-weight:700; color:#f7a13e; font-size:.9rem; text-align:center; padding:.5rem;">OIM/IOM</div>
                 <div class="partner-info">
                     <strong>Organisation Internationale pour les Migrations</strong>
                     <span>Support technique & financement</span>
                 </div>
             </div>
             <div class="partner-card">
-                <img src="<?= View::asset('assets/images/logo-maeci.png') ?>"
+                <img src="<?= View::asset('assets/images/maeci-logo.png') ?>"
                      alt="MAECI Italie — Ministère des Affaires Étrangères"
                      loading="lazy"
                      onerror="this.parentElement.querySelector('.partner-fallback').style.display='flex'; this.style.display='none'">
@@ -270,7 +270,7 @@
 }
 .objective-icon--orange { background:rgba(244,161,29,.12); color:#F4A11D; }
 .objective-icon--green  { background:rgba(29,164,98,.12);  color:#1DA462; }
-.objective-icon--blue   { background:rgba(0,91,154,.12);   color:#005B9A; }
+.objective-icon--blue   { background:rgba(247,161,62,.15);   color:#f7a13e; }
 .objective-card h3 { font-size:1.1rem; margin-bottom:.5rem; }
 
 .theme-pill {

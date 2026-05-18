@@ -14,12 +14,12 @@ class PageController
     public function aPropos(array $params = []): void
     {
         $stats = Indicateur::stats();
-        View::renderWithLayout('public/a_propos', compact('stats'));
+        View::renderWithLayout('public/a_propos_body', compact('stats'));
     }
 
     public function contact(array $params = []): void
     {
-        View::renderWithLayout('public/contact');
+        View::renderWithLayout('public/contact_body');
     }
 
     public function contactPost(array $params = []): void
@@ -70,7 +70,7 @@ class PageController
     public function sitemap(array $params = []): void
     {
         header('Content-Type: application/xml; charset=utf-8');
-        $baseUrl  = rtrim(\App\Core\Config::get('app.url', 'https://stat-niger.org/migrations'), '/');
+        $baseUrl  = \App\Core\View::baseUrl();
         $indicateurs = DB::query("SELECT slug, updated_at FROM indicateurs WHERE statut='actif' ORDER BY slug");
         $dossiers    = DB::query("SELECT slug, updated_at FROM dossiers WHERE statut='publie'");
         $pages = [
@@ -97,7 +97,7 @@ class PageController
     public function robots(array $params = []): void
     {
         header('Content-Type: text/plain; charset=utf-8');
-        $baseUrl = rtrim(\App\Core\Config::get('app.url', 'https://stat-niger.org/migrations'), '/');
+        $baseUrl = \App\Core\View::baseUrl();
         echo "User-agent: *\n";
         echo "Disallow: /admin/\n";
         echo "Disallow: /api/v1/\n";

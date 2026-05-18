@@ -66,19 +66,79 @@ class View
         return htmlspecialchars((string)$val, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     }
 
+    /**
+     * Détecte dynamiquement l'URL de base depuis la requête HTTP courante.
+     * Stratégie multi-couches pour fonctionner sur localhost, sandbox et production :
+     *  1. HTTP_X_FORWARDED_PROTO  (proxy standard)
+     *  2. HTTP_X_FORWARDED_SSL    (certains load balancers)
+     *  3. HTTP_FRONT_END_HTTPS    (IIS ARR)
+     *  4. HTTPS server var        (Apache/Nginx natif)
+     *  5. Heuristique port        : si HTTP_HOST ne contient pas ':port'
+     *                              ET que le port serveur n'est pas 80/8080,
+     *                              on suppose HTTPS (proxy transparent sandbox)
+     *  6. Fallback APP_URL .env   (CLI, cron)
+     */
+    public static function baseUrl(): string
+    {
+        static $base = null;
+        if ($base !== null) return $base;
+
+        // CLI / cron → fallback .env
+        if (php_sapi_name() === 'cli' || empty($_SERVER['HTTP_HOST'])) {
+            $base = rtrim(Config::get('app.url', 'http://localhost:8080'), '/');
+            return $base;
+        }
+
+        // Détection du scheme
+        $scheme = 'http';
+        if (!empty($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+            $scheme = strtolower(trim(explode(',', $_SERVER['HTTP_X_FORWARDED_PROTO'])[0]));
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] === 'on') {
+            $scheme = 'https';
+        } elseif (!empty($_SERVER['HTTP_FRONT_END_HTTPS']) && $_SERVER['HTTP_FRONT_END_HTTPS'] === 'on') {
+            $scheme = 'https';
+        } elseif (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+            $scheme = 'https';
+        } elseif (!empty($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443) {
+            $scheme = 'https';
+        } else {
+            // Heuristique sandbox / reverse proxy transparent :
+            // Si le HTTP_HOST ne contient pas de port explicite (donc port 80/443 implicite)
+            // ET que ce n'est pas localhost/127.x → on est derrière un proxy HTTPS
+            $host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'];
+            $hasExplicitPort = str_contains($host, ':');
+            $isLocalhost = (
+                str_contains($host, 'localhost') ||
+                str_starts_with($host, '127.') ||
+                str_starts_with($host, '::1')
+            );
+            if (!$hasExplicitPort && !$isLocalhost) {
+                $scheme = 'https';
+            }
+        }
+
+        $host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'];
+        // Prendre uniquement le premier host si liste (X-Forwarded-Host: h1, h2)
+        $host = trim(explode(',', $host)[0]);
+        // Supprimer ports standards
+        $host = preg_replace('/:(80|443)$/', '', $host);
+
+        $base = $scheme . '://' . $host;
+        return $base;
+    }
+
     /** Helper : URL asset avec cache-busting */
     public static function asset(string $path): string
     {
-        $fullPath = PUB_ROOT . '/' . ltrim($path, '/');
-        $ver = file_exists($fullPath) ? '?v=' . filemtime($fullPath) : '';
-        $base = Config::get('app.url', '');
-        return $base . '/assets/' . ltrim($path, '/') . $ver;
+        $clean    = ltrim($path, '/');
+        $fullPath = PUB_ROOT . '/' . $clean;
+        $ver      = file_exists($fullPath) ? '?v=' . filemtime($fullPath) : '';
+        return self::baseUrl() . '/assets/' . $clean . $ver;
     }
 
-    /** Helper : URL site */
+    /** Helper : URL site (chemin relatif à la racine) */
     public static function url(string $path = ''): string
     {
-        $base = rtrim(Config::get('app.url', ''), '/');
-        return $base . '/' . ltrim($path, '/');
+        return self::baseUrl() . '/' . ltrim($path, '/');
     }
 }

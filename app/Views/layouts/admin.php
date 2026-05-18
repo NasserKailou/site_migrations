@@ -15,7 +15,7 @@ $pendingCount = \App\Core\Database::count('observations', "statut='soumis'");
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="<?= asset('css/pndm.css') ?>">
-  <link rel="icon" href="<?= url('assets/images/favicon-32.png') ?>">
+  <link rel="icon" href="<?= url('assets/images/favicon.svg') ?>">
 </head>
 <body>
 <div class="admin-wrapper">
@@ -23,7 +23,7 @@ $pendingCount = \App\Core\Database::count('observations', "statut='soumis'");
   <!-- ── SIDEBAR ──────────────────────────────────────────── -->
   <aside class="admin-sidebar" id="adminSidebar" role="navigation" aria-label="Navigation administration">
     <a href="<?= url('admin/dashboard') ?>" class="admin-sidebar-logo">
-      <img src="<?= url('assets/images/logo-ins-white.png') ?>" alt="INS" width="36" height="36">
+      <img src="<?= url('assets/images/ins-logo.png') ?>" alt="INS" width="36" height="36">
       <div>
         <div style="font-weight:800;font-size:.9rem">PNDM Admin</div>
         <div style="font-size:.7rem;opacity:.6">INS Niger</div>

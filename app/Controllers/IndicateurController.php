@@ -47,7 +47,7 @@ class IndicateurController
         $metaTitle = 'Indicateurs — Données sur la migration au Niger';
         $metaDesc  = 'Explorez les ' . $total . ' indicateurs officiels sur la migration au Niger. Filtrez par thématique, source, période.';
 
-        View::renderWithLayout('public/indicateurs', compact(
+        View::renderWithLayout('public/indicateurs_body', compact(
             'indicateurs','total','page','totalPages','thematiques',
             'entites','frequences','filters','themSlug',
             'metaTitle','metaDesc'
@@ -100,8 +100,9 @@ class IndicateurController
         $metaTitle = esc($indicateur['libelle_fr']) . ' — PNDM Niger';
         $metaDesc  = mb_substr(strip_tags($indicateur['definition_fr'] ?? $indicateur['libelle_fr']), 0, 155);
 
-        View::renderWithLayout('public/indicateur_show', compact(
-            'indicateur','donnees','niveaux','annees','jsonLd','metaTitle','metaDesc','slug'
+        $extraJs = '<script>document.addEventListener("DOMContentLoaded",()=>{initIndicatorCharts("' . addslashes($slug) . '");});</script>';
+        View::renderWithLayout('public/indicateur_show_body', compact(
+            'indicateur','donnees','niveaux','annees','jsonLd','metaTitle','metaDesc','slug','extraJs'
         ));
     }
 

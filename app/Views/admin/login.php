@@ -1,7 +1,7 @@
 <div style="width:100%;max-width:440px;padding:1rem">
   <!-- Logo -->
   <div style="text-align:center;margin-bottom:2rem">
-    <img src="<?= url('assets/images/logo-ins-white.png') ?>" alt="INS Niger" style="height:64px;margin-bottom:1rem">
+    <img src="<?= url('assets/images/ins-logo.png') ?>" alt="INS Niger" style="height:64px;margin-bottom:1rem">
     <h1 style="color:#fff;font-size:1.5rem;font-weight:800;margin:0">PNDM Administration</h1>
     <p style="color:rgba(255,255,255,.7);font-size:.875rem;margin-top:.35rem">Institut National de la Statistique — Niger</p>
   </div>

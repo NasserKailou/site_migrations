@@ -82,7 +82,7 @@
     <div class="cards-grid">
       <?php foreach ($indicateurs_phares as $ind): ?>
       <?php
-        $hexColor = $ind['thematique_couleur'] ?? '#005B9A';
+        $hexColor = $ind['thematique_couleur'] ?? '#f7a13e';
         // Convert hex to light bg
         $r = hexdec(substr($hexColor,1,2));
         $g = hexdec(substr($hexColor,3,2));
@@ -136,7 +136,7 @@
     <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
       <?php foreach ($thematiques as $them): ?>
       <?php
-        $hexColor = $them['couleur'] ?? '#005B9A';
+        $hexColor = $them['couleur'] ?? '#f7a13e';
         $r = hexdec(substr($hexColor,1,2));
         $g = hexdec(substr($hexColor,3,2));
         $b = hexdec(substr($hexColor,5,2));
@@ -159,7 +159,7 @@
 </section>
 
 <!-- ── SECTION AGADEZ ─────────────────────────────────────────── -->
-<section class="section" style="background:linear-gradient(135deg,var(--pndm-blue-dark) 0%,var(--pndm-blue) 100%);color:#fff"
+<section class="section" style="background:linear-gradient(135deg,#1a3a2a 0%,#2a5a3e 100%);color:#fff"
          aria-labelledby="agadez-section-title">
   <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
     <div>
@@ -181,7 +181,7 @@
       </a>
     </div>
     <div aria-hidden="true">
-      <img src="<?= url('assets/images/map-niger-agadez.png') ?>"
+      <img src="<?= url('assets/images/agadez-hero.png') ?>"
            alt="Carte du Niger — Région d'Agadez"
            style="border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.3);width:100%;opacity:.9">
     </div>
@@ -233,9 +233,9 @@
 <section class="section" aria-labelledby="apropos-title">
   <div class="container" style="display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start">
     <div style="display:flex;flex-direction:column;gap:2rem">
-      <img src="<?= url('assets/images/logo-ins.png') ?>" alt="Logo INS Niger" style="width:120px">
-      <img src="<?= url('assets/images/logo-oim.png') ?>"  alt="OIM"          style="width:100px">
-      <img src="<?= url('assets/images/logo-italy.png') ?>" alt="Italie MAECI" style="width:120px">
+      <img src="<?= url('assets/images/ins-logo.png') ?>" alt="Logo INS Niger" style="width:120px">
+      <img src="<?= url('assets/images/iom-logo.png') ?>"  alt="OIM"          style="width:100px">
+      <img src="<?= url('assets/images/maeci-logo.png') ?>" alt="Italie MAECI" style="width:120px">
     </div>
     <div>
       <h2 id="apropos-title">À propos du PNDM</h2>

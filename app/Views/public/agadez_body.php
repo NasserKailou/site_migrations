@@ -3,9 +3,9 @@
 ════════════════════════════════════════════════════════════════ -->
 
 <!-- ── HERO ─────────────────────────────────────────────────── -->
-<section style="position:relative;min-height:500px;display:flex;align-items:center;background:linear-gradient(135deg,#1a3a2a 0%,#0d2b3e 50%,var(--pndm-blue-dark) 100%);color:#fff;overflow:hidden"
+<section style="position:relative;min-height:500px;display:flex;align-items:center;background:linear-gradient(135deg,#1a3a2a 0%,#2a5a3e 50%,#e08820 100%);color:#fff;overflow:hidden"
          aria-labelledby="agadez-hero-title">
-  <div style="position:absolute;inset:0;background-image:url('<?= url('assets/images/agadez-hero.jpg') ?>');background-size:cover;background-position:center;opacity:.25"></div>
+  <div style="position:absolute;inset:0;background-image:url('<?= url('assets/images/agadez-hero.png') ?>');background-size:cover;background-position:center;opacity:.25"></div>
   <div class="container" style="position:relative;z-index:1;padding:5rem 0">
     <nav aria-label="Fil d'Ariane" style="font-size:.8rem;opacity:.7;margin-bottom:1.5rem">
       <a href="<?= url() ?>" style="color:inherit">Accueil</a> › Dossiers › Agadez
@@ -57,7 +57,7 @@
         <li>
           <a href="#<?= esc($id) ?>"
              style="display:flex;align-items:center;gap:.5rem;padding:.4rem .5rem;border-radius:6px;font-size:.85rem;color:var(--gray-700);text-decoration:none;transition:background .2s,color .2s"
-             onmouseover="this.style.background='var(--pndm-blue-light)';this.style.color='var(--pndm-blue)'"
+             onmouseover="this.style.background='var(--pndm-orange-light)';this.style.color='var(--pndm-orange-dark)'"
              onmouseout="this.style.background='';this.style.color='var(--gray-700)'">
             <i class="fa-solid fa-<?= esc($icon) ?> fa-xs" style="width:14px;color:var(--pndm-orange)" aria-hidden="true"></i>
             <?= esc($label) ?>
@@ -73,7 +73,7 @@
 
     <!-- ── Contexte ───────────────────────────────────────── -->
     <section id="contexte" aria-labelledby="contexte-title" style="margin-bottom:4rem">
-      <h2 id="contexte-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-blue);margin-bottom:1rem">
+      <h2 id="contexte-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-orange-dark);margin-bottom:1rem">
         Contexte régional
       </h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start">
@@ -94,7 +94,7 @@
           </p>
         </div>
         <div>
-          <img src="<?= url('assets/images/map-corridor-agadez.jpg') ?>"
+          <img src="<?= url('assets/images/agadez-hero.png') ?>"
                alt="Carte du corridor migratoire Tamanrasset-Assamaka-Agadez"
                style="border-radius:12px;box-shadow:var(--shadow-md);width:100%">
           <p style="font-size:.7rem;color:var(--gray-400);text-align:center;margin-top:.5rem">
@@ -106,7 +106,7 @@
 
     <!-- ── Timeline Opérations ──────────────────────────── -->
     <section id="operations" aria-labelledby="operations-title" style="margin-bottom:4rem">
-      <h2 id="operations-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-blue);margin-bottom:2rem">
+      <h2 id="operations-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-orange-dark);margin-bottom:2rem">
         Genèse des opérations de refoulement
       </h2>
       <div class="timeline">
@@ -136,7 +136,7 @@
 
     <!-- ── Acteurs ───────────────────────────────────────── -->
     <section id="acteurs" aria-labelledby="acteurs-title" style="margin-bottom:4rem">
-      <h2 id="acteurs-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-blue);margin-bottom:1.5rem">
+      <h2 id="acteurs-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-orange-dark);margin-bottom:1.5rem">
         Acteurs institutionnels
       </h2>
       <?php
@@ -164,7 +164,7 @@
 
     <!-- ── Corridor Carte ────────────────────────────────── -->
     <section id="corridor" aria-labelledby="corridor-title" style="margin-bottom:4rem">
-      <h2 id="corridor-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-blue);margin-bottom:1rem">
+      <h2 id="corridor-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-orange-dark);margin-bottom:1rem">
         Corridor Tamanrasset → Assamaka → Agadez
       </h2>
       <p style="color:var(--gray-600);margin-bottom:1.5rem">
@@ -176,7 +176,7 @@
     <!-- ── Tableau de bord Power BI ─────────────────────── -->
     <section id="tableau-bord" aria-labelledby="powerbi-title" style="margin-bottom:4rem">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem">
-        <h2 id="powerbi-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-blue);margin:0">
+        <h2 id="powerbi-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-orange-dark);margin:0">
           Tableau de bord interactif
         </h2>
         <?php if (!empty($dossier['powerbi_url'])): ?>
@@ -187,28 +187,95 @@
         <?php endif; ?>
       </div>
 
-      <?php if (!empty($dossier['powerbi_url'])): ?>
-      <div class="powerbi-wrapper">
-        <iframe
-          src="<?= esc($dossier['powerbi_url']) ?>"
-          title="<?= esc($dossier['powerbi_titre'] ?? 'Tableau de bord Agadez') ?>"
-          allowfullscreen
-          loading="lazy"
-          aria-label="Tableau de bord Power BI — Agadez">
-        </iframe>
+      <?php
+      // Dashboards Power BI — URLs configurables depuis l'espace admin (table dossiers)
+      // Si plusieurs tableaux de bord sont définis, on les liste en onglets
+      $pbi_dashboards = [];
+      if (!empty($dossier['powerbi_url'])) {
+        // Support multi-dashboard : URLs séparées par "|" dans le champ powerbi_url
+        $parts = array_filter(array_map('trim', explode('|', $dossier['powerbi_url'])));
+        foreach ($parts as $idx => $url) {
+          $pbi_dashboards[] = [
+            'url'   => $url,
+            'titre' => match($idx) {
+              0 => 'Flux migratoires',
+              1 => 'Refoulements & Retours volontaires',
+              2 => 'Données socio-démographiques',
+              3 => 'Tendances annuelles',
+              default => 'Tableau de bord ' . ($idx + 1),
+            },
+          ];
+        }
+      }
+      ?>
+
+      <?php if (!empty($pbi_dashboards)): ?>
+      <!-- Onglets de tableaux de bord -->
+      <div style="border-bottom:2px solid var(--pndm-orange-light);margin-bottom:1.5rem;display:flex;gap:0;flex-wrap:wrap;" role="tablist" aria-label="Tableaux de bord Power BI">
+        <?php foreach ($pbi_dashboards as $idx => $db): ?>
+        <button type="button"
+                id="pbi-tab-<?= $idx ?>"
+                role="tab"
+                aria-selected="<?= $idx === 0 ? 'true' : 'false' ?>"
+                aria-controls="pbi-panel-<?= $idx ?>"
+                onclick="activatePbiTab(<?= $idx ?>, <?= count($pbi_dashboards) ?>)"
+                style="padding:.6rem 1.2rem;background:<?= $idx === 0 ? 'var(--pndm-orange)' : 'transparent' ?>;color:<?= $idx === 0 ? '#fff' : 'var(--gray-600)' ?>;border:none;font-size:.85rem;font-weight:600;cursor:pointer;border-radius:6px 6px 0 0;transition:all .2s;border-bottom:3px solid <?= $idx === 0 ? 'var(--pndm-orange)' : 'transparent' ?>;margin-bottom:-2px;">
+          <i class="fa-solid fa-chart-mixed fa-xs" aria-hidden="true"></i>
+          <?= esc($db['titre']) ?>
+        </button>
+        <?php endforeach; ?>
       </div>
+      <?php foreach ($pbi_dashboards as $idx => $db): ?>
+      <div id="pbi-panel-<?= $idx ?>" role="tabpanel" aria-labelledby="pbi-tab-<?= $idx ?>"
+           style="display:<?= $idx === 0 ? 'block' : 'none' ?>">
+        <div class="powerbi-wrapper">
+          <iframe
+            src="<?= esc($db['url']) ?>"
+            title="<?= esc($db['titre']) ?> — Agadez"
+            allowfullscreen loading="lazy"
+            aria-label="Tableau de bord Power BI — <?= esc($db['titre']) ?>">
+          </iframe>
+        </div>
+      </div>
+      <?php endforeach; ?>
+      <script>
+      function activatePbiTab(activeIdx, total) {
+        for (let i = 0; i < total; i++) {
+          const tab   = document.getElementById('pbi-tab-' + i);
+          const panel = document.getElementById('pbi-panel-' + i);
+          const isActive = i === activeIdx;
+          if (tab) {
+            tab.setAttribute('aria-selected', isActive);
+            tab.style.background = isActive ? 'var(--pndm-orange)' : 'transparent';
+            tab.style.color      = isActive ? '#fff' : 'var(--gray-600)';
+            tab.style.borderBottomColor = isActive ? 'var(--pndm-orange)' : 'transparent';
+          }
+          if (panel) panel.style.display = isActive ? 'block' : 'none';
+        }
+      }
+      </script>
+
       <?php else: ?>
-      <div style="background:var(--gray-50);border:2px dashed var(--gray-300);border-radius:12px;padding:3rem;text-align:center;color:var(--gray-500)">
-        <i class="fa-solid fa-chart-mixed fa-3x" style="margin-bottom:1rem;opacity:.4" aria-hidden="true"></i>
-        <p>Le tableau de bord Power BI sera disponible prochainement.</p>
-        <p style="font-size:.8rem;margin-top:.5rem">Configuration à effectuer depuis l'espace d'administration.</p>
+      <div style="background:var(--gray-50);border:2px dashed var(--pndm-orange-light);border-radius:12px;padding:3rem;text-align:center;color:var(--gray-500)">
+        <i class="fa-solid fa-chart-mixed fa-3x" style="margin-bottom:1rem;opacity:.4;color:var(--pndm-orange)" aria-hidden="true"></i>
+        <p style="font-size:1rem;font-weight:600;color:var(--gray-700);margin-bottom:.5rem">
+          Tableau de bord Power BI
+        </p>
+        <p style="font-size:.85rem;color:var(--gray-500)">
+          Les tableaux de bord interactifs seront disponibles ici.<br>
+          Configuration depuis l'espace d'administration → Dossiers → Agadez → <em>URL Power BI</em>.<br>
+          <small>Pour plusieurs tableaux de bord, séparez les URLs avec le caractère <code>|</code></small>
+        </p>
+        <a href="<?= url('admin/dossiers') ?>" class="btn btn-primary btn-sm" style="margin-top:1rem">
+          <i class="fa-solid fa-gear" aria-hidden="true"></i> Configurer
+        </a>
       </div>
       <?php endif; ?>
     </section>
 
     <!-- ── Indicateurs Agadez ────────────────────────────── -->
     <section id="indicateurs" aria-labelledby="ind-agadez-title" style="margin-bottom:4rem">
-      <h2 id="ind-agadez-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-blue);margin-bottom:1.5rem">
+      <h2 id="ind-agadez-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-orange-dark);margin-bottom:1.5rem">
         Indicateurs de la région d'Agadez
       </h2>
 
@@ -281,7 +348,7 @@
     <!-- ── Documents ─────────────────────────────────────── -->
     <?php if (!empty($documents)): ?>
     <section id="documents" aria-labelledby="docs-title" style="margin-bottom:3rem">
-      <h2 id="docs-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-blue);margin-bottom:1.5rem">
+      <h2 id="docs-title" style="font-size:1.75rem;font-weight:800;color:var(--pndm-orange-dark);margin-bottom:1.5rem">
         Documents officiels
       </h2>
       <div style="display:flex;flex-direction:column;gap:.75rem">
@@ -328,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const icons = {
     hub:      L.divIcon({ html: '<div style="background:#F4A11D;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.4)"></div>', iconSize: [16,16] }),
     frontiere:L.divIcon({ html: '<div style="background:#E74C3C;width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)"></div>', iconSize: [14,14] }),
-    transit:  L.divIcon({ html: '<div style="background:#005B9A;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.3)"></div>', iconSize: [12,12] }),
+    transit:  L.divIcon({ html: '<div style="background:var(--pndm-orange);width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.3)"></div>', iconSize: [12,12] }),
     capitale: L.divIcon({ html: '<div style="background:#1DA462;width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)"></div>', iconSize: [14,14] }),
   };
 

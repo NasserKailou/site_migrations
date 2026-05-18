@@ -5,15 +5,15 @@ $lang  = \App\Core\View::getLang();
 $siteNom = 'PNDM — Plateforme Nationale des Données sur la Migration';
 $metaTitle = $metaTitle ?? $siteNom;
 $metaDesc  = $metaDesc  ?? 'Données officielles sur la migration au Niger publiées par l\'Institut National de la Statistique.';
-$metaUrl   = $metaUrl   ?? (\App\Core\Config::get('app.url', '') . $_SERVER['REQUEST_URI']);
-$metaImg   = $metaImg   ?? url('assets/images/og-default.jpg');
+$metaUrl   = $metaUrl   ?? (\App\Core\View::baseUrl() . $_SERVER['REQUEST_URI']);
+$metaImg   = $metaImg   ?? url('assets/images/og-default.png');
 ?>
 <!DOCTYPE html>
 <html lang="<?= esc($lang) ?>" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#005B9A">
+  <meta name="theme-color" content="#f7a13e">
   <title><?= esc($metaTitle) ?></title>
   <meta name="description" content="<?= esc($metaDesc) ?>">
   <link rel="canonical" href="<?= esc($metaUrl) ?>">
@@ -40,7 +40,7 @@ $metaImg   = $metaImg   ?? url('assets/images/og-default.jpg');
   {"@context":"https://schema.org","@type":"Organization",
    "name":"Institut National de la Statistique — Niger",
    "alternateName":"INS Niger","url":"https://www.ins.niger.ne",
-   "logo":"<?= url('assets/images/logo-ins.png') ?>",
+   "logo":"<?= url('assets/images/ins-logo.png') ?>",
    "sameAs":["https://stat-niger.org"]}
   </script>
   <?php if (isset($jsonLd)): ?>
@@ -65,8 +65,8 @@ $metaImg   = $metaImg   ?? url('assets/images/og-default.jpg');
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 
   <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="<?= url('assets/images/favicon-32.png') ?>">
-  <link rel="apple-touch-icon" href="<?= url('assets/images/apple-touch-icon.png') ?>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= url('assets/images/favicon.svg') ?>">
+  <link rel="apple-touch-icon" href="<?= url('assets/images/favicon.svg') ?>">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
@@ -75,7 +75,7 @@ $metaImg   = $metaImg   ?? url('assets/images/og-default.jpg');
 <header class="site-header" role="banner">
   <div class="container">
     <a href="<?= url() ?>" class="site-logo" aria-label="PNDM — Accueil">
-      <img src="<?= url('assets/images/logo-ins.png') ?>" alt="Logo INS Niger" width="44" height="44">
+      <img src="<?= url('assets/images/ins-logo.png') ?>" alt="Logo INS Niger" width="44" height="44">
       <span class="site-logo-text">
         <span>PNDM</span>
         <span>Institut National de la Statistique</span>
@@ -88,11 +88,12 @@ $metaImg   = $metaImg   ?? url('assets/images/og-default.jpg');
 
     <nav class="site-nav" id="siteNav" aria-label="Navigation principale">
       <a href="<?= url() ?>"               <?= $_SERVER['REQUEST_URI'] === '/' ? 'class="active" aria-current="page"' : '' ?>>Accueil</a>
-      <a href="<?= url('indicateurs') ?>"  <?= str_starts_with($_SERVER['REQUEST_URI'],'/indicateurs') ? 'class="active" aria-current="page"' : '' ?>>Indicateurs</a>
+      <a href="<?= url('indicateurs') ?>"  <?= str_starts_with($_SERVER['REQUEST_URI'],'/indicateurs') ? 'class="active" aria-current="page"' : '' ?>>Thématiques</a>
+      <a href="<?= url('indicateurs') ?>#metadonnees"  >Métadonnées</a>
+      <a href="<?= url('indicateurs') ?>#extraction"  >Extraction</a>
       <a href="<?= url('dossiers/agadez') ?>" <?= str_starts_with($_SERVER['REQUEST_URI'],'/dossiers/agadez') ? 'class="active" aria-current="page"' : '' ?>>Agadez</a>
-      <a href="<?= url('a-propos') ?>">À propos</a>
-      <a href="<?= url('contact') ?>">Contact</a>
-      <a href="/api/v1/" target="_blank" rel="noopener">API <i class="fa-solid fa-arrow-up-right-from-square fa-xs" aria-hidden="true"></i></a>
+      <a href="<?= url('a-propos') ?>" <?= str_starts_with($_SERVER['REQUEST_URI'],'/a-propos') ? 'class="active" aria-current="page"' : '' ?>>À propos</a>
+      <a href="<?= url('contact') ?>" <?= str_starts_with($_SERVER['REQUEST_URI'],'/contact') ? 'class="active" aria-current="page"' : '' ?>>Contact</a>
       <a href="<?= url('admin') ?>" class="nav-cta"><i class="fa-solid fa-lock fa-xs" aria-hidden="true"></i> Admin</a>
 
       <div class="lang-switcher" role="group" aria-label="Langue">
@@ -124,16 +125,16 @@ $metaImg   = $metaImg   ?? url('assets/images/og-default.jpg');
       <!-- Col 1 : À propos -->
       <div class="footer-col">
         <div class="footer-logo">
-          <img src="<?= url('assets/images/logo-ins-white.png') ?>" alt="INS Niger" height="50">
+          <img src="<?= url('assets/images/ins-logo.png') ?>" alt="INS Niger" height="50">
         </div>
         <p class="footer-desc">
           La PNDM est la plateforme officielle de l'Institut National de la Statistique du Niger
           pour la diffusion des données sur la migration, développée avec l'appui de l'OIM.
         </p>
         <div class="footer-partners" aria-label="Partenaires">
-          <img src="<?= url('assets/images/logo-oim.png') ?>"  alt="OIM / IOM" height="32">
-          <img src="<?= url('assets/images/logo-italy.png') ?>" alt="Ministère Affaires Étrangères Italie" height="28">
-          <img src="<?= url('assets/images/logo-unhcr.png') ?>" alt="UNHCR" height="28">
+          <img src="<?= url('assets/images/iom-logo.png') ?>"  alt="OIM / IOM" height="32">
+          <img src="<?= url('assets/images/maeci-logo.png') ?>" alt="Ministère Affaires Étrangères Italie" height="28">
+          <img src="<?= url('assets/images/maeci-logo.png') ?>" alt="UNHCR" height="28">
         </div>
       </div>
       <!-- Col 2 : Navigation -->
